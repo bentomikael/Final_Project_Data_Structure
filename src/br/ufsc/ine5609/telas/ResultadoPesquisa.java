@@ -1,14 +1,15 @@
-package br.ufsc.ine5609.screen;
+package br.ufsc.ine5609.telas;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class ResultadoPesquisa extends JFrame{
     private String[] colunas;
     private JTable tabela;
     private JScrollPane scroll;
 
-    public ResultadoPesquisa(){ //recebera como parametro array de alunos
+    public ResultadoPesquisa(ArrayList alunosX){ //recebera como parametro array de alunos
         super("Resultado da Pesquisa");
         Container container = getContentPane();
         colunas = new String[]{"Matrícula", "Nome", "Idade","Centro"};

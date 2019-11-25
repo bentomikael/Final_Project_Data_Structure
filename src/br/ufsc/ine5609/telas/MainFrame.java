@@ -1,10 +1,12 @@
-package br.ufsc.ine5609.screen;
+package br.ufsc.ine5609.telas;
 
+import br.ufsc.ine5609.Buscas;
 import javafx.scene.control.ComboBox;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.*;
 
 public class MainFrame extends JFrame {
@@ -15,19 +17,14 @@ public class MainFrame extends JFrame {
     private JButton bt_pesquisarGrupo;
     private JButton bt_pesquisarIndividuo;
     private final String[] colunas;
-    private Object[][] alunos;
 
-    public MainFrame() {
+
+    public MainFrame(Object[][] alunos) {
 
         super("Lista Alunos");
 
         //teste
         colunas = new String[]{"Matrícula", "Nome", "Idade", "Centro"};
-        alunos = new Object[][]{
-                {"1919", "José", "22", "CTC"},
-                {"1111", "João", "33", "CCJ"},
-                {"0150", "Maria", "19", "CFH"}
-        };
 
         bt_pesquisarGrupo = new JButton("Fazer Pesquisa de um grupo");
         bt_pesquisarGrupo.addActionListener(new AcaoPesquisarGrupo());
@@ -79,7 +76,7 @@ public class MainFrame extends JFrame {
             int result = JOptionPane.showConfirmDialog(null, dialogPanel,
                     "Insira os parametros para sua pesquisa", JOptionPane.OK_CANCEL_OPTION);
             if (result == JOptionPane.OK_OPTION) {
-                pesquisaGrupo();
+                pesquisaGrupos(primeiro.getSelectedItem().toString(),segundo.getSelectedItem().toString());
             }
         }
     }
@@ -89,26 +86,28 @@ public class MainFrame extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            JTextField tf_matricula = new JTextField();
+            JTextField tf_entrada = new JTextField();
 
             JPanel dialogPanel = new JPanel();
             dialogPanel.setLayout(new BoxLayout(dialogPanel, BoxLayout.Y_AXIS));
             dialogPanel.add(new JLabel("Matrícula ou Nome"));
-            dialogPanel.add(tf_matricula);
+            dialogPanel.add(tf_entrada);
 
             int result = JOptionPane.showConfirmDialog(null, dialogPanel,
-                    "Pesquisa de Aluno por matrícula", JOptionPane.OK_CANCEL_OPTION);
+                    "Pesquisa de Aluno por matrícula ou nome", JOptionPane.OK_CANCEL_OPTION);
             if (result == JOptionPane.OK_OPTION) {
-                pesquisaAluno();
+                pesquisaAluno(tf_entrada.getText());
             }
         }
     }
 
-    private void pesquisaGrupo(){
-
+    private void pesquisaGrupos(String primeiro, String segundo){
+        System.out.println(primeiro + " "+ segundo);
+        Buscas.pesquisaGrupos(primeiro,segundo);
     }
-    private void pesquisaAluno(){
-
+    private void pesquisaAluno(String entrada){
+        System.out.println(entrada);
+        Buscas.pesquisaAluno(entrada);
     }
 }
 
