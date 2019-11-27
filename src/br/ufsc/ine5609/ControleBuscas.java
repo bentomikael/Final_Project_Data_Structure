@@ -8,8 +8,8 @@ public class ControleBuscas {
     private static Diretorio[] diretorios;
 
     public ControleBuscas() {
-        todosAlunos = new Aluno[99];  // sera array hash
-        diretorios = new Diretorio[99];
+        todosAlunos = new Aluno[99];  // sera array hash para localizar por matricula rapidamente
+        diretorios = new Diretorio[99]; // pode ser um array com tamanho definito ou uma lista encadeada talvez
     }
 
     /*
@@ -25,7 +25,10 @@ public class ControleBuscas {
     }
     //retorna lista de alunos que pertence aos grupos
     public static Aluno[] pesquisaGrupos(String primeiro, String segundo){
-
+        //pega o diretorio com o nome de 'primeiro' e pega diretorio com 'segundo'
+        //retorna os alunos que estejam em ambos diretorios
+        // exeto se o segundo for ' - '
+        // ai retorna so os do primeiro
         return null;
     }
 

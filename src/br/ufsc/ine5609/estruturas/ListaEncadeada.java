@@ -124,7 +124,7 @@ public class ListaEncadeada {
         if(getNumAlunos() == 0)
             return null;
         else{
-            // PEGAR TODOS ALUNOS DA LISTA E PASSAR PARA UMA LISTA DE ALUNOS
+            // PEGAR TODOS ALUNOS DA LISTA E PASSAR PARA UM ARRAY DE ALUNOS
         }
         return alunos;
     }

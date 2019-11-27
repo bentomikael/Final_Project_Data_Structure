@@ -2,8 +2,10 @@ package br.ufsc.ine5609.estruturas;
 
 import br.ufsc.ine5609.estruturas.ListaEncadeada;
 
+// serao criadas as listas invertidas como diretorios
+// usar como atributo nome as constantes definidas na classe constantes
 public class Diretorio {
-    private String nome;
+    private final String nome;
     private ListaEncadeada listaAlunos;
 
     public Diretorio(String nome) {
@@ -13,10 +15,6 @@ public class Diretorio {
 
     public String getNome() {
         return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public ListaEncadeada getListaAlunos() {
