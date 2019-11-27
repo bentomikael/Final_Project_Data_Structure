@@ -1,9 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package linkedlist;
+package br.ufsc.ine5609.estruturas;
+
+import br.ufsc.ine5609.Aluno;
 
 /**
  *
@@ -11,21 +8,21 @@ package linkedlist;
  */
 public class ListaEncadeada {
     
-    private int numElementos;
+    private int numAlunos;
     private Caixa primeiro, ultimo;
 
     public ListaEncadeada() {
-        this.numElementos = 0;
+        this.numAlunos = 0;
         this.primeiro = null;
         this.ultimo = null;
     }
 
-    public int getNumElementos() {
-        return numElementos;
+    public int getNumAlunos() {
+        return numAlunos;
     }
 
-    public void setNumElementos(int numElements) {
-        this.numElementos = numElements;
+    public void setNumAlunos(int numElements) {
+        this.numAlunos = numElements;
     }
 
     public Caixa getPrimeiro() {
@@ -44,70 +41,70 @@ public class ListaEncadeada {
         this.ultimo = ultimo;
     }
     
-    private void incrementaNumElementos() {
-        this.numElementos++;
+    private void incrementaNumAlunos() {
+        this.numAlunos++;
     }
     
-    private void decrementaNumElementos() {
-        this.numElementos--;
+    private void decrementaNumAlunos() {
+        this.numAlunos--;
     }
     
-    private boolean estaVazio() {
-        return (getNumElementos() == 0);
+    public boolean estaVazio() {
+        return (getNumAlunos() == 0);
     }
     
     private void insiraListaVazia(Caixa caixa) {
         this.setPrimeiro(caixa);
         this.setUltimo(caixa);
-        this.incrementaNumElementos();
+        this.incrementaNumAlunos();
     }
     
-    public void insiraPrimeiro(Object elemento) {
-        Caixa caixa = new Caixa(null, elemento);
+    public void insiraPrimeiro(Aluno aluno) {
+        Caixa caixa = new Caixa(null, aluno);
         if (estaVazio()) 
            this.insiraListaVazia(caixa);
          else {
             caixa.setProximo(this.getPrimeiro());
             this.setPrimeiro(caixa);
-            this.incrementaNumElementos();
+            this.incrementaNumAlunos();
         }
     }
     
-    public void insiraUltimo(Object elemento) {
-        Caixa caixa = new Caixa(null, elemento);
+    public void insiraUltimo(Aluno aluno) {
+        Caixa caixa = new Caixa(null, aluno);
         if (estaVazio()) 
            this.insiraListaVazia(caixa);
          else {
             this.getUltimo().setProximo(caixa);
             this.setUltimo(caixa);
-            this.incrementaNumElementos();
+            this.incrementaNumAlunos();
         }
     }
     
-    public void remova(Object elemento) { // refactor for removeById
+    public void remova(Object aluno) { // refactor for removeById
         if (!estaVazio()) {
             
             Caixa cursor = this.getPrimeiro();
-            for (int i = 0; i < this.getNumElementos() - 1; i++) {
-                if (cursor.equals(elemento)) { // cursor.getElemento().equals() 
-                    if (cursor.equals(this.getPrimeiro()) && cursor.equals(this.getUltimo())) { //is primeiro and ultimo and decrementaNumElementos
+            for (int i = 0; i < this.getNumAlunos() - 1; i++) {
+                if (cursor.equals(aluno)) { // cursor.getaluno().equals() 
+                    if (cursor.equals(this.getPrimeiro()) && cursor.equals(this.getUltimo())) { //is primeiro e ultimo e decrementaNumAlunos
                         this.setPrimeiro(null);
                         this.setUltimo(null);
-                        this.decrementaNumElementos();
+                        this.decrementaNumAlunos();
                     }
-                    if (cursor.equals(this.getPrimeiro())) { //is primeiro and decrementaNumElementos
+                    if (cursor.equals(this.getPrimeiro())) { //is primeiro e decrementaNumAlunos
                         this.setPrimeiro(this.getPrimeiro().getProximo());
-                        this.decrementaNumElementos();
+                        this.decrementaNumAlunos();
                     }
-                    if (cursor.equals(this.getUltimo())) { //is ultimo and decrementaNumElementos
+                    if (cursor.equals(this.getUltimo())) { //is ultimo e decrementaNumAlunos
                         Caixa novoUltimo = this.getPrimeiro();
-                        for (int j = 0; j < this.getNumElementos() - 2 ; j++) { 
+                        for (int j = 0; j < this.getNumAlunos() - 2 ; j++) { 
                             novoUltimo = novoUltimo.getProximo();
                         }
                         novoUltimo.setProximo(null);
                         this.setUltimo(novoUltimo);
                     } 
-                    if (!cursor.equals(this.getPrimeiro()) && !cursor.equals(this.getUltimo())) { // not is the primeiro and the ultimo and decrementaNumElementos
+                    if (!cursor.equals(this.getPrimeiro()) && !cursor.equals(this.getUltimo())) { // not is the primeiro e the ultimo e decrementaNumAlunos
                         Caixa paraRemover = cursor;
                         cursor = this.getPrimeiro();
                         for (int k = 0; k < i - 1; k++) {

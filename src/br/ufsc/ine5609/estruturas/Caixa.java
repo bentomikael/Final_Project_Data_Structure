@@ -1,9 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package linkedlist;
+package br.ufsc.ine5609.estruturas;
+
+import br.ufsc.ine5609.Aluno;
 
 /**
  *
@@ -12,11 +9,11 @@ package linkedlist;
 public class Caixa {
     
     private Caixa proximo;
-    private Object elemento;
+    private Aluno aluno;
 
-    public Caixa(Caixa proximo, Object elemento) {
+    public Caixa(Caixa proximo, Aluno aluno) {
         this.proximo = proximo;
-        this.elemento = elemento;
+        this.aluno = aluno;
     }
 
     public Caixa getProximo() {
@@ -27,11 +24,11 @@ public class Caixa {
         this.proximo = proximo;
     }
 
-    public Object getElemento() {
-        return elemento;
+    public Object getAluno() {
+        return aluno;
     }
 
-    public void setElemento(Object elemento) {
-        this.elemento = elemento;
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
     }
 }
