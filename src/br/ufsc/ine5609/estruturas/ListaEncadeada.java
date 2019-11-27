@@ -118,4 +118,14 @@ public class ListaEncadeada {
             }
         }
     }
+    public Aluno[] getTodosAlunos(){
+        Aluno[] alunos = new Aluno[numAlunos];
+
+        if(getNumAlunos() == 0)
+            return null;
+        else{
+            // PEGAR TODOS ALUNOS DA LISTA E PASSAR PARA UMA LISTA DE ALUNOS
+        }
+        return alunos;
+    }
 }

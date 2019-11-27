@@ -1,4 +1,4 @@
-package br.ufsc.ine5609;
+package br.ufsc.ine5609.estruturas;
 
 import br.ufsc.ine5609.estruturas.ListaEncadeada;
 

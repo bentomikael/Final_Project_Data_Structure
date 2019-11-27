@@ -1,12 +1,10 @@
 package br.ufsc.ine5609.telas;
 
-import br.ufsc.ine5609.Buscas;
-import javafx.scene.control.ComboBox;
+import br.ufsc.ine5609.ControleBuscas;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import javax.swing.*;
 
 public class MainFrame extends JFrame {
@@ -19,7 +17,7 @@ public class MainFrame extends JFrame {
     private final String[] colunas;
 
 
-    public MainFrame(Object[][] alunos) {
+    public MainFrame(String[][] alunos) {
 
         super("Lista Alunos");
 
@@ -103,11 +101,11 @@ public class MainFrame extends JFrame {
 
     private void pesquisaGrupos(String primeiro, String segundo){
         System.out.println(primeiro + " "+ segundo);
-        Buscas.pesquisaGrupos(primeiro,segundo);
+        ControleBuscas.pesquisaGrupos(primeiro,segundo);
     }
     private void pesquisaAluno(String entrada){
         System.out.println(entrada);
-        Buscas.pesquisaAluno(entrada);
+        ControleBuscas.pesquisaAluno(entrada);
     }
 }
 
