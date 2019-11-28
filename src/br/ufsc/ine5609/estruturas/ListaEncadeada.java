@@ -81,22 +81,23 @@ public class ListaEncadeada {
         }
     }
     
-    public void remova(Object aluno) { // refactor for removeById
+    public void remova(Aluno aluno) {
         if (!estaVazio()) {
             
             Caixa cursor = this.getPrimeiro();
             for (int i = 0; i < this.getNumAlunos() - 1; i++) {
-                if (cursor.equals(aluno)) { // cursor.getaluno().equals() 
-                    if (cursor.equals(this.getPrimeiro()) && cursor.equals(this.getUltimo())) { //is primeiro e ultimo e decrementaNumAlunos
+                if (cursor.getAluno().equals(aluno)) {
+                    if (cursor.getAluno().equals(this.getPrimeiro().getAluno()) && 
+                    cursor.getAluno().equals(this.getUltimo().getAluno())) { //eh primeiro e ultimo e decrementaNumAlunos
                         this.setPrimeiro(null);
                         this.setUltimo(null);
                         this.decrementaNumAlunos();
                     }
-                    if (cursor.equals(this.getPrimeiro())) { //is primeiro e decrementaNumAlunos
+                    if (cursor.getAluno().equals(this.getPrimeiro().getAluno())) { //eh primeiro e decrementaNumAlunos
                         this.setPrimeiro(this.getPrimeiro().getProximo());
                         this.decrementaNumAlunos();
                     }
-                    if (cursor.equals(this.getUltimo())) { //is ultimo e decrementaNumAlunos
+                    if (cursor.getAluno().equals(this.getUltimo().getAluno())) { //eh ultimo e decrementaNumAlunos
                         Caixa novoUltimo = this.getPrimeiro();
                         for (int j = 0; j < this.getNumAlunos() - 2 ; j++) { 
                             novoUltimo = novoUltimo.getProximo();
@@ -104,7 +105,8 @@ public class ListaEncadeada {
                         novoUltimo.setProximo(null);
                         this.setUltimo(novoUltimo);
                     } 
-                    if (!cursor.equals(this.getPrimeiro()) && !cursor.equals(this.getUltimo())) { // not is the primeiro e the ultimo e decrementaNumAlunos
+                    if (!cursor.getAluno().equals(this.getPrimeiro().getAluno()) && 
+                    !cursor.getAluno().equals(this.getUltimo().getAluno())) { // nao eh o primeiro e o ultimo e decrementaNumAlunos
                         Caixa paraRemover = cursor;
                         cursor = this.getPrimeiro();
                         for (int k = 0; k < i - 1; k++) {

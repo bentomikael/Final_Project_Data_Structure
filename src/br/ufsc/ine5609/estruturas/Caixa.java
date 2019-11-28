@@ -24,7 +24,7 @@ public class Caixa {
         this.proximo = proximo;
     }
 
-    public Object getAluno() {
+    public Aluno getAluno() {
         return aluno;
     }
 
