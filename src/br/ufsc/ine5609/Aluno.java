@@ -1,14 +1,14 @@
 package br.ufsc.ine5609;
 
 public class Aluno {
-    private String matricula, nome, idade, centro, curso;
+    private String matricula, nome, cotas, centro, curso;
 
-    public Aluno(String matricula, String nome, String idade, String centro, String curso) {
+    public Aluno(String matricula, String nome, String centro, String curso, String cotas) {
         this.matricula = matricula;
         this.nome = nome;
-        this.idade = idade;
         this.centro = centro;
         this.curso = curso;
+        this.cotas = cotas;
     }
 
     public String getMatricula() {
@@ -27,12 +27,12 @@ public class Aluno {
         this.nome = nome;
     }
 
-    public String getIdade() {
-        return idade;
+    public String getCotas() {
+        return cotas;
     }
 
-    public void setIdade(String idade) {
-        this.idade = idade;
+    public void setCotas(String idade) {
+        this.cotas = idade;
     }
 
     public String getCentro() {

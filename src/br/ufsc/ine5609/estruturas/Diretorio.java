@@ -1,16 +1,15 @@
 package br.ufsc.ine5609.estruturas;
 
-import br.ufsc.ine5609.estruturas.ListaEncadeada;
 
 // serao criadas as listas invertidas como diretorios
 // usar como atributo nome as constantes definidas na classe constantes
 public class Diretorio {
     private final String nome;
-    private ListaEncadeada listaAlunos;
+    private ListaEncadeada listaAlunos; //referencia um aluno ja existencia
 
     public Diretorio(String nome) {
         this.nome = nome;
-        alunos = new ListaEncadeada();
+        listaAlunos = new ListaEncadeada();
     }
 
     public String getNome() {

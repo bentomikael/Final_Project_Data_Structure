@@ -41,24 +41,6 @@ public class ListaEncadeada {
         this.ultimo = ultimo;
     }
     
-    private void incrementaNumAlunos() {
-        this.numAlunos++;
-    }
-    
-    private void decrementaNumAlunos() {
-        this.numAlunos--;
-    }
-    
-    public boolean estaVazio() {
-        return (getNumAlunos() == 0);
-    }
-    
-    private void insiraListaVazia(Caixa caixa) {
-        this.setPrimeiro(caixa);
-        this.setUltimo(caixa);
-        this.incrementaNumAlunos();
-    }
-    
     public void insiraPrimeiro(Aluno aluno) {
         Caixa caixa = new Caixa(null, aluno);
         if (estaVazio()) 
@@ -83,30 +65,27 @@ public class ListaEncadeada {
     
     public void remova(Aluno aluno) {
         if (!estaVazio()) {
+            
             Caixa cursor = this.getPrimeiro();
-            int numAlunos = this.getNumAlunos();
-            for (int i = 0; i < numAlunos; i++) {
+            for (int i = 0; i < this.getNumAlunos() - 1; i++) {
                 if (cursor.getAluno().equals(aluno)) {
                     if (cursor.getAluno().equals(this.getPrimeiro().getAluno()) && 
                     cursor.getAluno().equals(this.getUltimo().getAluno())) { //eh primeiro e ultimo e decrementaNumAlunos
                         this.setPrimeiro(null);
                         this.setUltimo(null);
                         this.decrementaNumAlunos();
-                        break;
                     }
                     if (cursor.getAluno().equals(this.getPrimeiro().getAluno())) { //eh primeiro e decrementaNumAlunos
                         this.setPrimeiro(this.getPrimeiro().getProximo());
                         this.decrementaNumAlunos();
-                        break;
                     }
                     if (cursor.getAluno().equals(this.getUltimo().getAluno())) { //eh ultimo e decrementaNumAlunos
                         Caixa novoUltimo = this.getPrimeiro();
-                        for (int j = 0; j < numAlunos - 2 ; j++) { 
+                        for (int j = 0; j < this.getNumAlunos() - 2 ; j++) { 
                             novoUltimo = novoUltimo.getProximo();
                         }
                         novoUltimo.setProximo(null);
                         this.setUltimo(novoUltimo);
-                        break;
                     } 
                     if (!cursor.getAluno().equals(this.getPrimeiro().getAluno()) && 
                     !cursor.getAluno().equals(this.getUltimo().getAluno())) { // nao eh o primeiro e o ultimo e decrementaNumAlunos
@@ -116,7 +95,6 @@ public class ListaEncadeada {
                             cursor = cursor.getProximo();
                         }
                         cursor.setProximo(paraRemover.getProximo());
-                        break;
                     }
                 } else {
                     cursor = cursor.getProximo();
@@ -124,14 +102,38 @@ public class ListaEncadeada {
             }
         }
     }
+
     public Aluno[] getTodosAlunos(){
         Aluno[] alunos = new Aluno[numAlunos];
+        Caixa ponteiro = getPrimeiro();
 
         if(getNumAlunos() == 0)
             return null;
         else{
-            // PEGAR TODOS ALUNOS DA LISTA E PASSAR PARA UM ARRAY DE ALUNOS
+            for (int i = 0; i< numAlunos; i++){
+                alunos[i] = ponteiro.getAluno();
+                if (ponteiro != ultimo)
+                    ponteiro = ponteiro.getProximo();
+            }
         }
         return alunos;
+    }
+
+    private void incrementaNumAlunos() {
+        this.numAlunos++;
+    }
+
+    private void decrementaNumAlunos() {
+        this.numAlunos--;
+    }
+
+    public boolean estaVazio() {
+        return (getNumAlunos() == 0);
+    }
+
+    private void insiraListaVazia(Caixa caixa) {
+        this.setPrimeiro(caixa);
+        this.setUltimo(caixa);
+        this.incrementaNumAlunos();
     }
 }

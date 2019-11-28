@@ -1,5 +1,7 @@
 package br.ufsc.ine5609.estruturas;
 
+import br.ufsc.ine5609.Aluno;
+
 public class Hash {
     private ListaEncadeada[] tabelaEspalhamento;
     int tamanhoTabela;
@@ -13,30 +15,9 @@ public class Hash {
         return chave % this.tamanhoTabela;
     }
 
-    public ListaEncadeada[] getTabelaEspalhamento() {
-        return this.tabelaEspalhamento;
-    }
-    
     public void inserir(Aluno aluno) {
         int grupo = funcaoHash(Integer.parseInt(aluno.getMatricula()));
-        
-        if (this.getTabelaEspalhamento()[grupo] == null) {
-            this.getTabelaEspalhamento()[grupo] = new ListaEncadeada();
-        }
-        this.getTabelaEspalhamento()[grupo].insiraPrimeiro(aluno);
+        tabelaEspalhamento[grupo].insiraPrimeiro(aluno);
     }
-    
-    public void remover(Aluno aluno) {
-        int chave = Integer.parseInt(aluno.getMatricula());
-        ListaEncadeada cursorTabela = this.getTabelaEspalhamento()[funcaoHash(chave)];
-        cursorTabela.remova(aluno);
-        if (cursorTabela.estaVazio()) {
-            this.getTabelaEspalhamento()[funcaoHash(chave)] = null;
-        }
-    }
-    
-    public ListaEncadeada getListaDeAluno(int chave) {
-        return this.getTabelaEspalhamento()[funcaoHash(chave)];
-    }
-    
+
 }
