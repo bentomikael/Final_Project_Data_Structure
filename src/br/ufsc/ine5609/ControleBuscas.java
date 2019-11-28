@@ -63,7 +63,7 @@ public class ControleBuscas {
 
     //pega os dados dos alunos e monta as linhas da tabela
     public static String[][] converteAlunosParaLista(Aluno[] alunos){
-        String[][] listaAlunos = new String[alunos.length][];
+        String[][] listaAlunos = new String[alunos.length][]; // definir tamanho do segundo array, numero de atributos da classe aluno
         for(int i = 0;i < alunos.length;i++){
             listaAlunos[i][0] = alunos[i].getMatricula();
             listaAlunos[i][1] = alunos[i].getNome();
