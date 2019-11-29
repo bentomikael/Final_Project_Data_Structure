@@ -29,8 +29,8 @@ public class ListaEncadeada {
         return primeiro;
     }
 
-    public void setPrimeiro(Caixa first) {
-        this.primeiro = first;
+    public void setPrimeiro(Caixa primeiro) {
+        this.primeiro = primeiro;
     }
 
     public Caixa getUltimo() {
@@ -65,27 +65,30 @@ public class ListaEncadeada {
     
     public void remova(Aluno aluno) {
         if (!estaVazio()) {
-            
             Caixa cursor = this.getPrimeiro();
-            for (int i = 0; i < this.getNumAlunos() - 1; i++) {
+            int numAlunos = this.getNumAlunos();
+            for (int i = 0; i < numAlunos; i++) {
                 if (cursor.getAluno().equals(aluno)) {
                     if (cursor.getAluno().equals(this.getPrimeiro().getAluno()) && 
                     cursor.getAluno().equals(this.getUltimo().getAluno())) { //eh primeiro e ultimo e decrementaNumAlunos
                         this.setPrimeiro(null);
                         this.setUltimo(null);
                         this.decrementaNumAlunos();
+                        break;
                     }
                     if (cursor.getAluno().equals(this.getPrimeiro().getAluno())) { //eh primeiro e decrementaNumAlunos
                         this.setPrimeiro(this.getPrimeiro().getProximo());
                         this.decrementaNumAlunos();
+                        break;
                     }
                     if (cursor.getAluno().equals(this.getUltimo().getAluno())) { //eh ultimo e decrementaNumAlunos
                         Caixa novoUltimo = this.getPrimeiro();
-                        for (int j = 0; j < this.getNumAlunos() - 2 ; j++) { 
+                        for (int j = 0; j < numAlunos - 2 ; j++) { 
                             novoUltimo = novoUltimo.getProximo();
                         }
                         novoUltimo.setProximo(null);
                         this.setUltimo(novoUltimo);
+                        break;
                     } 
                     if (!cursor.getAluno().equals(this.getPrimeiro().getAluno()) && 
                     !cursor.getAluno().equals(this.getUltimo().getAluno())) { // nao eh o primeiro e o ultimo e decrementaNumAlunos
@@ -95,6 +98,7 @@ public class ListaEncadeada {
                             cursor = cursor.getProximo();
                         }
                         cursor.setProximo(paraRemover.getProximo());
+                        break;
                     }
                 } else {
                     cursor = cursor.getProximo();
