@@ -43,17 +43,17 @@ public class Interface {
     public void mostrarOpcoesCentros(boolean ehCadastro){
         if (! ehCadastro)
             System.out.println("0 - Nenhum");
-        System.out.println("1 - "+ Constantes.CCE);
+        System.out.println("1 - "+ Constantes.CTC);
         System.out.println("2 - "+ Constantes.CCS);
         System.out.println("3 - "+ Constantes.CFH);
-        System.out.println("4 - "+ Constantes.CTC);
+        System.out.println("4 - "+ Constantes.CCE);
     }
     public void mostrarOpcoesCursos(boolean ehCadastro){
         if (! ehCadastro)
             System.out.println("0 - Nenhum");
-        System.out.println("1 - "+ Constantes.SISTEMAS);
-        System.out.println("2 - "+ Constantes.COMPUTACAO);
-        System.out.println("3 - "+ Constantes.ADMINISTRACAO);
+        System.out.println("1 - "+ Constantes.ADMINISTRACAO);
+        System.out.println("2 - "+ Constantes.SISTEMAS);
+        System.out.println("3 - "+ Constantes.COMPUTACAO);
         System.out.println("4 - "+ Constantes.ENGENHARIA);
     }
     public void mostrarOpcoesCotas(boolean ehCadastro){
@@ -64,5 +64,14 @@ public class Interface {
     }
     public void mostraCabecalhoRespostaPorGrupos(String param1, String param2, String param3){
         System.out.println("Parametros de busca: "+param1+", "+param2+", "+param3);
+    }
+    public void pedeNome() {
+        System.out.println("Digite o nome do aluno");
+    }
+
+
+
+    public void mOpcaoInvalida() {
+        System.out.println("** Opcao Invalida! Tente Novamente **");
     }
 }

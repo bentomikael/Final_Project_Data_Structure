@@ -1,5 +1,6 @@
 package br.ufsc.ine5609;
 
+import br.ufsc.ine5609.controle.ControleBuscas;
 import br.ufsc.ine5609.telas.Interface;
 
 public class Main{

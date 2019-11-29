@@ -1,12 +1,10 @@
-package br.ufsc.ine5609;
+package br.ufsc.ine5609.controle;
 
+import br.ufsc.ine5609.Aluno;
+import br.ufsc.ine5609.Constantes;
 import br.ufsc.ine5609.estruturas.Diretorio;
 import br.ufsc.ine5609.estruturas.ListaEncadeada;
 
-/*
-    ESTA FECHANDO JANELA PRINCIPAL AO FECHAR JANELA DE RESPOSTAS
-    FALTA IMPLEMENTAR BUSCA POR DIRETORIOS
- */
 
 public class ControleBuscas {
     private static final ControleBuscas INSTANCE = new ControleBuscas();
@@ -43,7 +41,7 @@ public class ControleBuscas {
     }
 
     //retorna lista de alunos que pertence aos grupos
-    public Aluno[] pesquisaGrupos(String curso, String centro, String cotista){
+    public Aluno[] pesquisaGrupos(String[] opcoes){
         //pega o diretorio com o nome de 'primeiro' e pega diretorio com 'segundo'
         //retorna os alunos que estejam em ambos diretorios
         // exeto se o segundo for ' - '
