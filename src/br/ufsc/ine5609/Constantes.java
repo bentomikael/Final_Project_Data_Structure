@@ -2,8 +2,8 @@ package br.ufsc.ine5609;
 
 // classe para ser invocada sempre que precisar dessas strings fixas
 public class Constantes{
-    private static final Constantes INSTANCE = new Constantes();
 
+    public static final int QTD_DIRETORIOS = 10;
 
     //Centros
     public static final String CTC = "CTC";
@@ -21,16 +21,5 @@ public class Constantes{
     public static final String SIM = "Sim";
     public static final String NAO = "Não";
 
-    public static final String[] TODOS_CURSOS = new String[]{
-            ADMINISTRACAO,
-            SISTEMAS,
-            COMPUTACAO,
-            ENGENHARIA
-    };
-    public static final String[] TODOS_CENTROS = new String[]{
-            CTC,
-            CCS,
-            CFH,
-            CCE
-    };
+
 }
