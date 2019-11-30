@@ -16,8 +16,8 @@ public class ControladorPrincipal {
         controleBuscas = ControleBuscas.getInstance();
         controleEntradaSaida = ControleEntradaSaida.getInstance();
         controleTelas = ControleTelas.getInstance();
-        listaPrincipal = listaPrincipal;
-        diretorios = diretorios; // PODE BUGAR
+        this.listaPrincipal = listaPrincipal;
+        this.diretorios = diretorios; // PODE BUGAR
 
     }
     public void iniciar(){
@@ -27,7 +27,7 @@ public class ControladorPrincipal {
     private void opcaoDoMenu(int opcao){ // recebe opcao e direciona
         switch (opcao){
             case 1:
-                //adicionaAluno(controleTelas.adicionaAluno());
+                adicionaAluno(controleTelas.adicionaAluno(), this.listaPrincipal);
                 break;
             case 2:
                 removeAluno();
@@ -43,6 +43,12 @@ public class ControladorPrincipal {
                 break;
         }
     }
+
+    private void adicionaAluno(Object[] dadosNovoAluno, Hash listaPrincipal) {
+        this.controleEntradaSaida.inserirNovoAluno(dadosNovoAluno, listaPrincipal);
+        iniciar();
+    }
+
     private void exibeAlunos(Aluno[] alunos){
         controleTelas.exibeAlunos(alunos);
         iniciar();

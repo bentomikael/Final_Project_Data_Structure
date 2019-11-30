@@ -35,7 +35,7 @@ public class Main{
 
 
         ControladorPrincipal c = new ControladorPrincipal(listaPrincipal, diretorios); // carga de dados realizada
-        
+
         c.iniciar();
 
         ControleBuscas controleBuscas = ControleBuscas.getInstance();

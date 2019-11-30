@@ -1,6 +1,7 @@
 package br.ufsc.ine5609.controle;
 
 import br.ufsc.ine5609.Aluno;
+import br.ufsc.ine5609.Constantes;
 import br.ufsc.ine5609.telas.Interface;
 
 import java.util.Scanner;
@@ -23,17 +24,57 @@ public class ControleTelas {
         tela.mostrarOpcoesHome();
         return inputInt(4);
     }
+
     public Object[] adicionaAluno(){
-        Object[] novoAluno = new Object[4];
+        Object[] dadosAluno = new Object[4];
         tela.pedeNome();
-        novoAluno[0] = key.nextLine();
+        dadosAluno[0] = key.nextLine(); // nome do aluno
+
         tela.mostrarOpcoesCentros(true);
-        novoAluno[1] =  inputInt(4);
+        int opcaoCentro = inputInt(3); // centro 1, 2, 3
+
+        switch (opcaoCentro) {
+            case 1:
+                dadosAluno[1] = Constantes.CTC;
+                break;
+            case 2:
+                dadosAluno[1] = Constantes.CCS;
+                break;
+            case 3:
+                dadosAluno[1] = Constantes.CCE;
+                break;
+        }
+
         tela.mostrarOpcoesCursos(true);
-        novoAluno[2] =  inputInt(4);
+        int opcaoCurso = inputInt(3); // curso 1, 2, 3
+
+        switch (opcaoCurso) {
+            case 1:
+                dadosAluno[2] = Constantes.SISTEMAS;
+                break;
+            case 2:
+                dadosAluno[2] = Constantes.COMPUTACAO;
+                break;
+            case 3:
+                dadosAluno[2] = Constantes.ENGENHARIA;
+                break;
+        }
+
+
         tela.mostrarOpcoesCotas(true);
-        novoAluno[3] = inputInt(2);
-        return novoAluno;
+        int opcaoCota = inputInt(2); // cota
+
+        switch (opcaoCota) {
+            case 1:
+                dadosAluno[3] = Constantes.SIM;
+                break;
+            case 2:
+                dadosAluno[3] = Constantes.NAO;
+                break;
+        }
+
+        return dadosAluno;
+
     }
     public String buscaAluno(){
         tela.mostrarOpcoesBuscaAluno();
