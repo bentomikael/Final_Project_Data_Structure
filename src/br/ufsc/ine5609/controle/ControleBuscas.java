@@ -3,6 +3,7 @@ package br.ufsc.ine5609.controle;
 import br.ufsc.ine5609.Aluno;
 import br.ufsc.ine5609.Constantes;
 import br.ufsc.ine5609.estruturas.Diretorio;
+import br.ufsc.ine5609.estruturas.Hash;
 import br.ufsc.ine5609.estruturas.ListaEncadeada;
 
 
@@ -47,6 +48,14 @@ public class ControleBuscas {
         // exeto se o segundo for ' - '
         // ai retorna so os do primeiro
         return null;
+    }
+
+    /**
+     * Metodo para retornar um aluno buscando pela matricula na lista principal
+     * @return aluno encontrado
+     */
+    public Aluno encontraAlunoPelaMatricula(String matricula, Hash listaPrincipal) {
+        return listaPrincipal.encontrarPorChave(matricula);
     }
 
 

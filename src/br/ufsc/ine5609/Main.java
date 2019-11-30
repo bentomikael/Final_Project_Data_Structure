@@ -83,6 +83,7 @@ public class Main{
         System.out.println(c.getDiretorios()[7].getListaAlunos().getNumAlunos());
         System.out.println("Fim dos testes");
 
+
         c.iniciar();
 
 

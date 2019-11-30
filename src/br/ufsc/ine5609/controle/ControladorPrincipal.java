@@ -31,7 +31,8 @@ public class ControladorPrincipal {
                 adicionaAluno(controleTelas.adicionaAluno(), this.listaPrincipal, this.diretorios); // recebe os dados do aluno, a lista principal e os diretorios
                 break;
             case 2:
-                removeAluno();
+                removeAluno(controleBuscas.encontraAlunoPelaMatricula(controleTelas.pegaMatricula(), this.listaPrincipal),
+                        this.listaPrincipal, this.diretorios); //recebe o aluno, a lista principal e os diretorios
                 break;
             case 3:
                 exibeAlunos(controleBuscas.pesquisaAluno(controleTelas.buscaAluno())); //pesquisa e exibe resultado
@@ -51,13 +52,14 @@ public class ControladorPrincipal {
         iniciar();
     }
 
-    private void exibeAlunos(Aluno[] alunos){
-        controleTelas.exibeAlunos(alunos);
+    private void removeAluno(Aluno aluno, Hash listaPrincipal, Diretorio[] diretorios) {
+        this.controleEntradaSaida.removerAluno(aluno, listaPrincipal, diretorios);
         iniciar();
     }
 
-    private boolean removeAluno(){
-        return true;
+    private void exibeAlunos(Aluno[] alunos){
+        controleTelas.exibeAlunos(alunos);
+        iniciar();
     }
 
     private Object[] converteDadosAluno(Object[] dadosAluno){

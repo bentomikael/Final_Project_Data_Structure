@@ -63,8 +63,13 @@ public class Interface {
     public void mostraCabecalhoRespostaPorGrupos(String param1, String param2, String param3){
         System.out.println("Parametros de busca: "+param1+", "+param2+", "+param3);
     }
+
     public void pedeNome() {
         System.out.println("Digite o nome do aluno");
+    }
+
+    public void pedeMatricula() {
+        System.out.println("Digite a matricula do aluno");
     }
 
 

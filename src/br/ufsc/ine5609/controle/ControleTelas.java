@@ -37,7 +37,11 @@ public class ControleTelas {
         tela.mostrarOpcoesCotas(true);
         dadosAluno[3] = inputInt(2); // cota
         return dadosAluno;
+    }
 
+    public String pegaMatricula() {
+        tela.pedeMatricula();
+        return key.nextLine();
     }
     public String buscaAluno(){
         tela.mostrarOpcoesBuscaAluno();

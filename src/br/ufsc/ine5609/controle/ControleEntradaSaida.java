@@ -23,21 +23,27 @@ public class ControleEntradaSaida {
         String curso = (String) dadosNovoAluno[2];
         String cota = (String) dadosNovoAluno[3];
 
-        //teste
-        System.out.println("Mensagem de teste");
+        //TESTE
+        System.out.println("Mensagem de verificacao de dados ");
         System.out.println(matricula);
         System.out.println(nome);
         System.out.println(centro);
         System.out.println(curso);
         System.out.println(cota);
-        //teste
+        //TESTE
 
         Aluno novoAluno = new Aluno(matricula,nome,centro,curso,cota);
-
         inserirNoDiretorio(novoAluno, defineDiretorioCentro(novoAluno.getCentro(), diretorios));
         inserirNoDiretorio(novoAluno, defineDiretorioCurso(novoAluno.getCurso(), diretorios));
         inserirNoDiretorio(novoAluno, defineDiretorioCota(novoAluno.getCotas(), diretorios));
         listaPrincipal.inserir(novoAluno);
+    }
+
+    public void removerAluno(Aluno aluno, Hash listaPrincipal, Diretorio[] diretorios) {
+        removerDoDiretorio(aluno, defineDiretorioCentro(aluno.getCentro(), diretorios));
+        removerDoDiretorio(aluno, defineDiretorioCurso(aluno.getCurso(), diretorios));
+        removerDoDiretorio(aluno, defineDiretorioCota(aluno.getCotas(), diretorios));
+        listaPrincipal.remover(aluno);
     }
 
     /**
@@ -45,6 +51,13 @@ public class ControleEntradaSaida {
      */
     private void inserirNoDiretorio(Aluno aluno, Diretorio diretorio) {
         diretorio.getListaAlunos().insiraPrimeiro(aluno);
+    }
+
+    /**
+     * Metodo para remover um aluno de um diretorio
+     */
+    private void removerDoDiretorio(Aluno aluno, Diretorio diretorio) {
+        diretorio.getListaAlunos().remova(aluno);
     }
 
     /**
@@ -104,8 +117,4 @@ public class ControleEntradaSaida {
         }
         return matricula;
     }
-
-
-
-
 }
