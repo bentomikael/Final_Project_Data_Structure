@@ -2,14 +2,23 @@ package br.ufsc.ine5609.controle;
 
 import br.ufsc.ine5609.Aluno;
 import br.ufsc.ine5609.Constantes;
+import br.ufsc.ine5609.estruturas.Diretorio;
+import br.ufsc.ine5609.estruturas.Hash;
 
 public class ControladorPrincipal {
     private ControleBuscas controleBuscas;
+    private ControleEntradaSaida controleEntradaSaida;
     private ControleTelas controleTelas;
+    private Hash listaPrincipal;
+    private Diretorio[] diretorios;
 
-    public ControladorPrincipal() {
+    public ControladorPrincipal(Hash listaPrincipal, Diretorio[] diretorios) {
         controleBuscas = ControleBuscas.getInstance();
+        controleEntradaSaida = ControleEntradaSaida.getInstance();
         controleTelas = ControleTelas.getInstance();
+        listaPrincipal = listaPrincipal;
+        diretorios = diretorios; // PODE BUGAR
+
     }
     public void iniciar(){
         opcaoDoMenu(controleTelas.inicio()); //exibe tela inicial e aguarda opcao
@@ -18,7 +27,7 @@ public class ControladorPrincipal {
     private void opcaoDoMenu(int opcao){ // recebe opcao e direciona
         switch (opcao){
             case 1:
-                adicionaAluno(controleTelas.adicionaAluno());
+                //adicionaAluno(controleTelas.adicionaAluno());
                 break;
             case 2:
                 removeAluno();
@@ -51,6 +60,7 @@ public class ControladorPrincipal {
     private Aluno[] pesquisaEmDiretorios(int[] opcoes){
         return controleBuscas.pesquisaGrupos(converteOpcoes(opcoes));
     }
+    //abaixo foi removida ADMINISTRACAO e CFH
     private String[] converteOpcoes(int[] opcoes) {
         String[] resposta = new String[3];
         if (opcoes[0] == 0) {
@@ -59,16 +69,12 @@ public class ControladorPrincipal {
             resposta[0] = Constantes.CTC;
         } else if (opcoes[0] == 2) {
             resposta[0] = Constantes.CCS;
-        } else if (opcoes[0] == 3) {
-            resposta[0] = Constantes.CFH;
         } else if (opcoes[0] == 4) {
             resposta[0] = Constantes.CCE;
         }
 
         if (opcoes[0] == 0) {
             resposta[0] = "-";
-        } else if (opcoes[1] == 1) {
-            resposta[1] = Constantes.ADMINISTRACAO;
         } else if (opcoes[1] == 2) {
             resposta[1] = Constantes.SISTEMAS;
         } else if (opcoes[1] == 3) {

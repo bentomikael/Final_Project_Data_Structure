@@ -6,7 +6,7 @@ import br.ufsc.ine5609.Constantes;
 public class Interface {
 
     public void listarAlunos(Aluno[] alunos){
-        if(alunos != null)
+        if(alunos == null)
             System.out.println("------------------Nenhum aluno encontrado------------------");
         else {
             System.out.printf("%s %15s %15s %14s %12s \n",
@@ -45,16 +45,14 @@ public class Interface {
             System.out.println("0 - Nenhum");
         System.out.println("1 - "+ Constantes.CTC);
         System.out.println("2 - "+ Constantes.CCS);
-        System.out.println("3 - "+ Constantes.CFH);
-        System.out.println("4 - "+ Constantes.CCE);
+        System.out.println("3 - "+ Constantes.CCE);
     }
     public void mostrarOpcoesCursos(boolean ehCadastro){
         if (! ehCadastro)
             System.out.println("0 - Nenhum");
-        System.out.println("1 - "+ Constantes.ADMINISTRACAO);
-        System.out.println("2 - "+ Constantes.SISTEMAS);
-        System.out.println("3 - "+ Constantes.COMPUTACAO);
-        System.out.println("4 - "+ Constantes.ENGENHARIA);
+        System.out.println("1 - "+ Constantes.SISTEMAS);
+        System.out.println("2 - "+ Constantes.COMPUTACAO);
+        System.out.println("3 - "+ Constantes.ENGENHARIA);
     }
     public void mostrarOpcoesCotas(boolean ehCadastro){
         if (! ehCadastro)
