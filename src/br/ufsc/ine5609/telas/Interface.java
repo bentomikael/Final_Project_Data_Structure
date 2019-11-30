@@ -38,12 +38,6 @@ public class Interface {
 
     }
 
-    public void mostrarOpcoesBuscaAluno(){
-        System.out.println("Digite a matrícula ou o nome do aluno");
-        System.out.println("(Não diferência maiusculas de minusculas)");
-    }
-
-
     public void mostrarOpcoesCentros(boolean ehCadastro){
         if (! ehCadastro)
             System.out.println("0 - Nenhum");
@@ -51,6 +45,7 @@ public class Interface {
         System.out.println("2 - "+ Constantes.CCS);
         System.out.println("3 - "+ Constantes.CCE);
     }
+
     public void mostrarOpcoesCursos(boolean ehCadastro){
         if (! ehCadastro)
             System.out.println("0 - Nenhum");
@@ -58,14 +53,12 @@ public class Interface {
         System.out.println("2 - "+ Constantes.COMPUTACAO);
         System.out.println("3 - "+ Constantes.ENGENHARIA);
     }
+
     public void mostrarOpcoesCotas(boolean ehCadastro){
         if (! ehCadastro)
             System.out.println("0 - Nenhum");
         System.out.println("1 - "+ Constantes.SIM);
         System.out.println("2 - "+ Constantes.NAO);
-    }
-    public void mostraCabecalhoRespostaPorGrupos(String param1, String param2, String param3){
-        System.out.println("Parametros de busca: "+param1+", "+param2+", "+param3);
     }
 
     public void pedeNome() {
@@ -76,7 +69,9 @@ public class Interface {
         System.out.println("Digite a matricula do aluno");
     }
 
-
+    public void mMatriculaInvalida() {
+        System.out.println("Matricula Invalida! Tente Novamente");
+    }
 
     public void mOpcaoInvalida() {
         System.out.println("** Opcao Invalida! Tente Novamente **");

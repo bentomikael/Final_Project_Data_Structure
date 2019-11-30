@@ -43,6 +43,10 @@ public class ControleTelas {
         return key.nextLine();
     }
 
+    public void exibeMensagemMatricula() {
+        tela.mMatriculaInvalida();
+    }
+
     public int[] buscaGrupo(){
         int[] arrayGrupos = new int[3];
         tela.mostrarOpcoesCentros(false);

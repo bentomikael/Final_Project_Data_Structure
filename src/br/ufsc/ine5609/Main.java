@@ -82,7 +82,6 @@ public class Main{
         c.getControleEntradaSaida().inserirNovoAluno(dadosAlunos13, listaPrincipal, diretorios);
         c.getControleEntradaSaida().inserirNovoAluno(dadosAlunos14, listaPrincipal, diretorios);
         c.getControleEntradaSaida().inserirNovoAluno(dadosAlunos15, listaPrincipal, diretorios);
-        System.out.println("Fim dos testes");
 
         c.iniciar();
     }

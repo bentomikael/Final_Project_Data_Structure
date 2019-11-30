@@ -52,7 +52,12 @@ public class ControladorPrincipal {
     }
 
     private void removeAluno(Aluno aluno, Hash listaPrincipal, Diretorio[] diretorios) {
-        this.controleEntradaSaida.removerAluno(aluno, listaPrincipal, diretorios);
+        if (aluno != null) {
+            this.controleEntradaSaida.removerAluno(aluno, listaPrincipal, diretorios);
+            iniciar();
+        } else {
+            controleTelas.exibeMensagemMatricula();
+        }
         iniciar();
     }
 
