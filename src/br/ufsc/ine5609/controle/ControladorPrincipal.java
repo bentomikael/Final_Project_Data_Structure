@@ -20,6 +20,7 @@ public class ControladorPrincipal {
         this.diretorios = diretorios; // PODE BUGAR
 
     }
+
     public void iniciar(){
         opcaoDoMenu(controleTelas.inicio()); //exibe tela inicial e aguarda opcao
     }
@@ -27,7 +28,7 @@ public class ControladorPrincipal {
     private void opcaoDoMenu(int opcao){ // recebe opcao e direciona
         switch (opcao){
             case 1:
-                adicionaAluno(controleTelas.adicionaAluno(), this.listaPrincipal);
+                adicionaAluno(controleTelas.adicionaAluno(), this.listaPrincipal, this.diretorios);
                 break;
             case 2:
                 removeAluno();
@@ -44,8 +45,8 @@ public class ControladorPrincipal {
         }
     }
 
-    private void adicionaAluno(Object[] dadosNovoAluno, Hash listaPrincipal) {
-        this.controleEntradaSaida.inserirNovoAluno(adicionaAluno(dadosNovoAluno), listaPrincipal);
+    private void adicionaAluno(Object[] dadosNovoAluno, Hash listaPrincipal, Diretorio[] diretorios) {
+        this.controleEntradaSaida.inserirNovoAluno(converteDadosAluno(dadosNovoAluno), listaPrincipal, diretorios);
         iniciar();
     }
 
@@ -58,7 +59,7 @@ public class ControladorPrincipal {
         return true;
     }
 
-    private Object[] adicionaAluno(Object[] dadosAluno){
+    private Object[] converteDadosAluno(Object[] dadosAluno){
         String nome = (String) dadosAluno[0];
         String[] grupos = converteOpcoes(new int[]{(int) dadosAluno[1],(int) dadosAluno[2],(int) dadosAluno[3]});
         return new Object[]{nome,grupos[0],grupos[1],grupos[2]};
@@ -105,6 +106,13 @@ public class ControladorPrincipal {
         return controleBuscas.getListaAlunos();
     }
 
+    public ControleEntradaSaida getControleEntradaSaida() {
+        return this.controleEntradaSaida;
+    }
+
+    public Diretorio[] getDiretorios() {
+        return this.diretorios;
+    }
 
 
 }

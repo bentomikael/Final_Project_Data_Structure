@@ -2,7 +2,7 @@ package br.ufsc.ine5609.controle;
 
 import br.ufsc.ine5609.Aluno;
 import br.ufsc.ine5609.estruturas.Hash;
-
+import br.ufsc.ine5609.estruturas.Diretorio;
 import java.util.Random;
 
 public class ControleEntradaSaida {
@@ -15,21 +15,57 @@ public class ControleEntradaSaida {
         return INSTANCE;
     }
 
-    public void inserirNovoAluno(Object[] dadosNovoAluno, Hash listaPrincipal) {
+    public void inserirNovoAluno(Object[] dadosNovoAluno, Hash listaPrincipal, Diretorio[] diretorios) {
 
         String matricula = gerarMatricula();
-        String nome = dadosNovoAluno[0].toString();
-        String centro = dadosNovoAluno[1].toString();
-        String curso = dadosNovoAluno[2].toString();
-        String cota = dadosNovoAluno[3].toString();
+        String nome = (String) dadosNovoAluno[0];
+        String centro = (String) dadosNovoAluno[1];
+        String curso = (String) dadosNovoAluno[2];
+        String cota = (String) dadosNovoAluno[3];
 
+        //teste
         System.out.println(matricula);
         System.out.println(nome);
         System.out.println(centro);
         System.out.println(curso);
         System.out.println(cota);
+        //teste
 
-        listaPrincipal.inserir(new Aluno(matricula,nome,centro,curso,cota));
+        Aluno novoAluno = new Aluno(matricula,nome,centro,curso,cota);
+
+        inserirNoDiretorioCentro(novoAluno, diretorios);
+        inserirNoDiretorioCurso(novoAluno, diretorios);
+        inserirNoDiretorioCota(novoAluno, diretorios);
+
+        listaPrincipal.inserir(novoAluno);
+    }
+
+    private void inserirNoDiretorioCentro(Aluno aluno, Diretorio[] diretorios) {
+        if (aluno.getCentro() == diretorios[0].getNome()) { //CTC
+            diretorios[0].getListaAlunos().insiraPrimeiro(aluno);
+        } else if (aluno.getCentro() == diretorios[1].getNome()) { //CCS
+            diretorios[1].getListaAlunos().insiraPrimeiro(aluno);
+        } else if (aluno.getCentro() == diretorios[2].getNome()) { //CCE
+            diretorios[2].getListaAlunos().insiraPrimeiro(aluno);
+        }
+    }
+
+    private void inserirNoDiretorioCurso(Aluno aluno, Diretorio[] diretorios) {
+        if (aluno.getCurso() == diretorios[3].getNome()) { //SISTEMAS
+            diretorios[3].getListaAlunos().insiraPrimeiro(aluno);
+        } else if (aluno.getCurso() == diretorios[4].getNome()) { //COMPUTACAO
+            diretorios[4].getListaAlunos().insiraPrimeiro(aluno);
+        } else if (aluno.getCurso() == diretorios[5].getNome()) { //ENGENHARIA
+            diretorios[5].getListaAlunos().insiraPrimeiro(aluno);
+        }
+    }
+
+    private void inserirNoDiretorioCota(Aluno aluno, Diretorio[] diretorios) {
+        if (aluno.getCotas() == diretorios[6].getNome()) { //SIM
+            diretorios[6].getListaAlunos().insiraPrimeiro(aluno);
+        } else if (aluno.getCotas() == diretorios[7].getNome()) { //NAO
+            diretorios[7].getListaAlunos().insiraPrimeiro(aluno);
+        }
     }
 
     /**
