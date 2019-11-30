@@ -9,13 +9,6 @@ import br.ufsc.ine5609.telas.Interface;
 public class Main{
     public static void main(String args[]){
 
-        //testes
-//        Aluno[] listaAlunos = new Aluno[]{
-//                new Aluno("0001", "José renato","CTC", Constantes.SISTEMAS, Constantes.SIM),
-//                new Aluno("0002", "João","CCJ", Constantes.SISTEMAS, Constantes.NAO),
-//                new Aluno("0003", "Maria","CFH", Constantes.COMPUTACAO, Constantes.SIM)
-//        };
-
         Object[] dadosAlunos = new Object[] {
                 "José renato", Constantes.CTC, Constantes.SISTEMAS, Constantes.SIM
         };
@@ -31,6 +24,21 @@ public class Main{
         Object[] dadosAlunos5 = new Object[] {
                 "Fernando", Constantes.CCE, Constantes.COMPUTACAO, Constantes.SIM
         };
+        Object[] dadosAlunos6 = new Object[] {
+                "Mario", Constantes.CTC, Constantes.COMPUTACAO, Constantes.NAO
+        };
+        Object[] dadosAlunos7 = new Object[] {
+                "Ronaldo", Constantes.CCE, Constantes.SISTEMAS, Constantes.SIM
+        };
+        Object[] dadosAlunos8 = new Object[] {
+                "Antonio", Constantes.CTC, Constantes.COMPUTACAO, Constantes.SIM
+        };
+        Object[] dadosAlunos9 = new Object[] {
+                "Maria", Constantes.CCS, Constantes.SISTEMAS, Constantes.NAO
+        };
+        Object[] dadosAlunos10 = new Object[] {
+                "Joana", Constantes.CCE, Constantes.ENGENHARIA, Constantes.SIM
+        };
 
         Diretorio[] diretorios = new Diretorio[Constantes.QTD_DIRETORIOS]; // cria o array de diretorios
         // inicializa cada diretorio
@@ -43,12 +51,10 @@ public class Main{
         diretorios[6] = new Diretorio(Constantes.SIM);
         diretorios[7] = new Diretorio(Constantes.NAO);
 
-        Hash listaPrincipal = new Hash(1009); // cria a lista principal
 
-//        for (Aluno aluno : listaAlunos) { // insercao do array de alunos no hash
-//            listaPrincipal.inserir(aluno);
-//        }
+
         //inserido estruturas
+        Hash listaPrincipal = new Hash(1009); // cria a lista principal
         ControladorPrincipal c = new ControladorPrincipal(listaPrincipal, diretorios);
         // carga de dados realizada
         c.getControleEntradaSaida().inserirNovoAluno(dadosAlunos, listaPrincipal, diretorios);
@@ -56,6 +62,11 @@ public class Main{
         c.getControleEntradaSaida().inserirNovoAluno(dadosAlunos3, listaPrincipal, diretorios);
         c.getControleEntradaSaida().inserirNovoAluno(dadosAlunos4, listaPrincipal, diretorios);
         c.getControleEntradaSaida().inserirNovoAluno(dadosAlunos5, listaPrincipal, diretorios);
+        c.getControleEntradaSaida().inserirNovoAluno(dadosAlunos6, listaPrincipal, diretorios);
+        c.getControleEntradaSaida().inserirNovoAluno(dadosAlunos7, listaPrincipal, diretorios);
+        c.getControleEntradaSaida().inserirNovoAluno(dadosAlunos8, listaPrincipal, diretorios);
+        c.getControleEntradaSaida().inserirNovoAluno(dadosAlunos9, listaPrincipal, diretorios);
+        c.getControleEntradaSaida().inserirNovoAluno(dadosAlunos10, listaPrincipal, diretorios);
 
         //teste OK
         System.out.println(c.getDiretorios()[0].getNome()); // DIRETORIO CTC
@@ -84,12 +95,5 @@ public class Main{
         System.out.println("Fim dos testes");
 
         c.iniciar();
-
-
-        //ControleBuscas controleBuscas = ControleBuscas.getInstance();
-
-        //Interface i = new Interface();
-        //i.listarAlunos(listaAlunos);
-
     }
 }

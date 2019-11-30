@@ -37,9 +37,6 @@ public class ControladorPrincipal {
             case 3:
                 exibeUnicoAluno(controleBuscas.encontraAlunoPelaMatricula(controleTelas.pegaMatricula(), this.listaPrincipal)); //pesquisa e exibe resultado
                 break;
-//            case 666:
-//                exibeAlunos(pesquisaEmDiretorios(controleTelas.buscaGrupo())); //pesquisa e exibe resultado
-//                break;
             case 4:
                 exibeAlunos(pesquisaEmDiretorios(controleTelas.buscaGrupo(), this.diretorios)); //pesquisa e exibe resultado
                 break;

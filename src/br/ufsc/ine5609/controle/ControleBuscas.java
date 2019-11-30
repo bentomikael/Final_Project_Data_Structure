@@ -53,66 +53,48 @@ public class ControleBuscas {
         Diretorio diretorioCotas = defineDiretorioCota(cotas, diretorios);
 
         if (diretorioCentro != null && diretorioCurso != null && diretorioCotas != null) {
-            //pesquisa em centro+curso+cotas
+            return pesquisaDiretoriosABC(diretorioCentro, diretorioCurso, diretorioCotas);  //pesquisa em centro+curso+cotas
         } else if (diretorioCentro != null && diretorioCurso != null) {
-            //pesquisa em centro+curso
+            return pesquisaDiretoriosAB(diretorioCentro, diretorioCurso); //pesquisa em centro+curso
         } else if (diretorioCentro != null && diretorioCotas != null) {
-            //pesquisa em centro+cotas
+            return pesquisaDiretoriosAB(diretorioCentro, diretorioCotas); //pesquisa em centro+cotas
         } else if (diretorioCurso != null && diretorioCotas != null) {
-            //pesquisa em curso+cotas
+            return pesquisaDiretoriosAB(diretorioCurso, diretorioCotas); //pesquisa em curso+cotas
         } else if (diretorioCentro != null) {
-            //pesquisa so em  centro
-            return diretorioCentro.getListaAlunos().getTodosAlunos();
+            return diretorioCentro.getListaAlunos().getTodosAlunos(); //pesquisa so em  centro
         } else if (diretorioCurso != null) {
-            //pesquisa so em curso
-            return diretorioCurso.getListaAlunos().getTodosAlunos();
+            return diretorioCurso.getListaAlunos().getTodosAlunos();  //pesquisa so em curso
         } else if (diretorioCotas != null) {
-            //pesquisa so em cotas
-            return diretorioCotas.getListaAlunos().getTodosAlunos();
+            return diretorioCotas.getListaAlunos().getTodosAlunos(); //pesquisa so em cotas
         }
+        return null; // nao foi escolhido nenhuma opcao
+    }
 
+    private Aluno[] pesquisaDiretoriosAB(Diretorio diretorioA, Diretorio diretorioB) {
 
-//        Aluno[] alunosDesteCentro = null;
-//        if (diretorioCentro != null) { // foi escolhido um centro
-//            if (!diretorioCentro.getListaAlunos().estaVazio()) { // verifica se tem alunos nesse dir
-//                alunosDesteCentro = diretorioCentro.getListaAlunos().getTodosAlunos();
-//            }
-//        }
-//
-//        Aluno[] alunosDesteCurso = null;
-//        if (diretorioCurso != null) { // foi escolhido um curso
-//            if (!diretorioCurso.getListaAlunos().estaVazio()) { // verifica se tem alunos nesse dir
-//                alunosDesteCurso = diretorioCurso.getListaAlunos().getTodosAlunos();
-//            }
-//        }
-//
-//        Aluno[] alunosDestaCota = null;
-//        if (diretorioCotas != null) { // foi escolhido uma cota
-//            if (!diretorioCotas.getListaAlunos().estaVazio()) { // verifica se tem alunos nesse dir
-//                alunosDestaCota = diretorioCotas.getListaAlunos().getTodosAlunos();
-//            }
-//        }
-//
-//        if ( alunosDesteCentro == null && alunosDesteCurso == null && alunosDestaCota == null) { // nao foi escolhido nenhuma opcao
-//            //TESTE
-//            System.out.println("nenhum diretorio escolhido");
-//            return null;
-//        } else {
-//
-//        }
+        Diretorio diretorioAB = new Diretorio("AB");
 
+        Aluno[] alunosDiretorioA = diretorioA.getListaAlunos().getTodosAlunos();
+        Aluno[] alunosDiretorioB = diretorioB.getListaAlunos().getTodosAlunos();
+
+        for (int i = 0; i < alunosDiretorioA.length; i++) {
+            for (int j = 0; j < alunosDiretorioB.length; j++) {
+                if (alunosDiretorioA[i].getMatricula() == alunosDiretorioB[j].getMatricula()) {
+                    diretorioAB.getListaAlunos().insiraPrimeiro(alunosDiretorioA[i]);
+                }
+            }
+        }
+        return diretorioAB.getListaAlunos().getTodosAlunos();
+    }
+
+    private Aluno[] pesquisaDiretoriosABC(Diretorio diretorioA, Diretorio diretorioB, Diretorio diretorioC) {
         return null;
     }
 
-        private Aluno[] diretorioParaArray(Diretorio diretorio) {
-            return diretorio.getListaAlunos().getTodosAlunos();
-        }
 
-        //pega o diretorio com o nome de 'primeiro' e pega diretorio com 'segundo'
-        //retorna os alunos que estejam em ambos diretorios
-        // exeto se o segundo for ' - '
-        // ai retorna so os do primeiro
-
+    private Aluno[] diretorioParaArray(Diretorio diretorio) {
+        return diretorio.getListaAlunos().getTodosAlunos();
+    }
 
     private Diretorio defineDiretorioCentro(String centro, Diretorio[] diretorios) {
         if (centro == diretorios[0].getNome()) { //CTC
