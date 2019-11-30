@@ -24,6 +24,7 @@ public class ControleEntradaSaida {
         String cota = (String) dadosNovoAluno[3];
 
         //teste
+        System.out.println("Mensagem de teste");
         System.out.println(matricula);
         System.out.println(nome);
         System.out.println(centro);
@@ -33,39 +34,60 @@ public class ControleEntradaSaida {
 
         Aluno novoAluno = new Aluno(matricula,nome,centro,curso,cota);
 
-        inserirNoDiretorioCentro(novoAluno, diretorios);
-        inserirNoDiretorioCurso(novoAluno, diretorios);
-        inserirNoDiretorioCota(novoAluno, diretorios);
-
+        inserirNoDiretorio(novoAluno, defineDiretorioCentro(novoAluno.getCentro(), diretorios));
+        inserirNoDiretorio(novoAluno, defineDiretorioCurso(novoAluno.getCurso(), diretorios));
+        inserirNoDiretorio(novoAluno, defineDiretorioCota(novoAluno.getCotas(), diretorios));
         listaPrincipal.inserir(novoAluno);
     }
 
-    private void inserirNoDiretorioCentro(Aluno aluno, Diretorio[] diretorios) {
-        if (aluno.getCentro() == diretorios[0].getNome()) { //CTC
-            diretorios[0].getListaAlunos().insiraPrimeiro(aluno);
-        } else if (aluno.getCentro() == diretorios[1].getNome()) { //CCS
-            diretorios[1].getListaAlunos().insiraPrimeiro(aluno);
-        } else if (aluno.getCentro() == diretorios[2].getNome()) { //CCE
-            diretorios[2].getListaAlunos().insiraPrimeiro(aluno);
-        }
+    /**
+     * Metodo para inserir um aluno em um diretorio
+     */
+    private void inserirNoDiretorio(Aluno aluno, Diretorio diretorio) {
+        diretorio.getListaAlunos().insiraPrimeiro(aluno);
     }
 
-    private void inserirNoDiretorioCurso(Aluno aluno, Diretorio[] diretorios) {
-        if (aluno.getCurso() == diretorios[3].getNome()) { //SISTEMAS
-            diretorios[3].getListaAlunos().insiraPrimeiro(aluno);
-        } else if (aluno.getCurso() == diretorios[4].getNome()) { //COMPUTACAO
-            diretorios[4].getListaAlunos().insiraPrimeiro(aluno);
-        } else if (aluno.getCurso() == diretorios[5].getNome()) { //ENGENHARIA
-            diretorios[5].getListaAlunos().insiraPrimeiro(aluno);
+    /**
+     * Metodo para definer o diretorio centro correto para o aluno
+     * @return diretorio correto
+     */
+    private Diretorio defineDiretorioCentro(String centro, Diretorio[] diretorios) {
+        if (centro == diretorios[0].getNome()) { //CTC
+            return diretorios[0];
+        } else if (centro == diretorios[1].getNome()) { //CCS
+            return diretorios[1];
+        } else if (centro == diretorios[2].getNome()) { //CCE
+            return diretorios[2];
         }
+        return null;
     }
 
-    private void inserirNoDiretorioCota(Aluno aluno, Diretorio[] diretorios) {
-        if (aluno.getCotas() == diretorios[6].getNome()) { //SIM
-            diretorios[6].getListaAlunos().insiraPrimeiro(aluno);
-        } else if (aluno.getCotas() == diretorios[7].getNome()) { //NAO
-            diretorios[7].getListaAlunos().insiraPrimeiro(aluno);
+    /**
+     * Metodo para definer o diretorio curso correto para o aluno
+     * @return diretorio correto
+     */
+    private Diretorio defineDiretorioCurso(String curso, Diretorio[] diretorios) {
+        if (curso == diretorios[3].getNome()) { //SISTEMAS
+            return diretorios[3];
+        } else if (curso == diretorios[4].getNome()) { //COMPUTACAO
+            return diretorios[4];
+        } else if (curso == diretorios[5].getNome()) { //ENGENHARIA
+            return diretorios[5];
         }
+        return null;
+    }
+
+    /**
+     * Metodo para definer o diretorio cota correto para o aluno
+     * @return diretorio correto
+     */
+    private Diretorio defineDiretorioCota(String cota, Diretorio[] diretorios) {
+        if (cota == diretorios[6].getNome()) { //SIM
+            return diretorios[6];
+        } else if (cota == diretorios[7].getNome()) { //NAO
+            return diretorios[7];
+        }
+        return null;
     }
 
     /**
@@ -82,6 +104,8 @@ public class ControleEntradaSaida {
         }
         return matricula;
     }
+
+
 
 
 }

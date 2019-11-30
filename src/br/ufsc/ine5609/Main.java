@@ -81,6 +81,7 @@ public class Main{
 
         // printar 2, pois foram inseridos 2 alunos que nao tem cota
         System.out.println(c.getDiretorios()[7].getListaAlunos().getNumAlunos());
+        System.out.println("Fim dos testes");
 
         c.iniciar();
 

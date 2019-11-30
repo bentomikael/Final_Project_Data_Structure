@@ -28,7 +28,7 @@ public class ControladorPrincipal {
     private void opcaoDoMenu(int opcao){ // recebe opcao e direciona
         switch (opcao){
             case 1:
-                adicionaAluno(controleTelas.adicionaAluno(), this.listaPrincipal, this.diretorios);
+                adicionaAluno(controleTelas.adicionaAluno(), this.listaPrincipal, this.diretorios); // recebe os dados do aluno, a lista principal e os diretorios
                 break;
             case 2:
                 removeAluno();
@@ -46,7 +46,8 @@ public class ControladorPrincipal {
     }
 
     private void adicionaAluno(Object[] dadosNovoAluno, Hash listaPrincipal, Diretorio[] diretorios) {
-        this.controleEntradaSaida.inserirNovoAluno(converteDadosAluno(dadosNovoAluno), listaPrincipal, diretorios);
+        Object[] dadosParaInserir = converteDadosAluno(dadosNovoAluno);
+        this.controleEntradaSaida.inserirNovoAluno(dadosParaInserir, listaPrincipal, diretorios);
         iniciar();
     }
 
