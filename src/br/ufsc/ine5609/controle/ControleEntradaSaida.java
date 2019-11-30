@@ -23,15 +23,6 @@ public class ControleEntradaSaida {
         String curso = (String) dadosNovoAluno[2];
         String cota = (String) dadosNovoAluno[3];
 
-        //TESTE
-        System.out.println("Mensagem de verificacao de dados ");
-        System.out.println(matricula);
-        System.out.println(nome);
-        System.out.println(centro);
-        System.out.println(curso);
-        System.out.println(cota);
-        //TESTE
-
         Aluno novoAluno = new Aluno(matricula,nome,centro,curso,cota);
         inserirNoDiretorio(novoAluno, defineDiretorioCentro(novoAluno.getCentro(), diretorios));
         inserirNoDiretorio(novoAluno, defineDiretorioCurso(novoAluno.getCurso(), diretorios));

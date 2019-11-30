@@ -35,13 +35,13 @@ public class ControladorPrincipal {
                         this.listaPrincipal, this.diretorios); //recebe o aluno, a lista principal e os diretorios
                 break;
             case 3:
-                exibeAlunos(controleBuscas.pesquisaAluno(controleTelas.buscaAluno())); //pesquisa e exibe resultado
+                exibeUnicoAluno(controleBuscas.encontraAlunoPelaMatricula(controleTelas.pegaMatricula(), this.listaPrincipal)); //pesquisa e exibe resultado
                 break;
             case 4:
                 exibeAlunos(pesquisaEmDiretorios(controleTelas.buscaGrupo())); //pesquisa e exibe resultado
                 break;
             case 5:
-                exibeAlunos(getListaAlunos());
+                exibeAlunos(getListaAlunos()); // funcionando, lista todos os alunos
                 break;
         }
     }
@@ -54,6 +54,12 @@ public class ControladorPrincipal {
 
     private void removeAluno(Aluno aluno, Hash listaPrincipal, Diretorio[] diretorios) {
         this.controleEntradaSaida.removerAluno(aluno, listaPrincipal, diretorios);
+        iniciar();
+    }
+
+    private void exibeUnicoAluno(Aluno aluno) {
+        Aluno[] unicoAluno = new Aluno[] { aluno };
+        controleTelas.exibeAlunos(unicoAluno);
         iniciar();
     }
 
@@ -106,7 +112,7 @@ public class ControladorPrincipal {
     }
 
     private Aluno[] getListaAlunos(){
-        return controleBuscas.getListaAlunos();
+        return this.listaPrincipal.getArrayAlunos();
     }
 
     public ControleEntradaSaida getControleEntradaSaida() {

@@ -22,7 +22,7 @@ public class ControleTelas {
 
     public int inicio() {
         tela.mostrarOpcoesHome();
-        return inputInt(4);
+        return inputInt(5);
     }
 
     public Object[] adicionaAluno(){

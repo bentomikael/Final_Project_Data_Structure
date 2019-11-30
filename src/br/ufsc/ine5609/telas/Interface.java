@@ -6,9 +6,11 @@ import br.ufsc.ine5609.Constantes;
 public class Interface {
 
     public void listarAlunos(Aluno[] alunos){
-        if(alunos == null)
+        if(alunos == null) {
             System.out.println("------------------Nenhum aluno encontrado------------------");
-        else {
+        } else if (alunos[0] == null) {
+            System.out.println("------------------Matricula nao existe------------------");
+        } else {
             System.out.printf("%s %15s %15s %14s %12s \n",
                     " ___________", " __________ ", "________ ", " _________", " ________");
             System.out.printf("%1s %15s %13s %17s %-8s \n",
@@ -32,6 +34,8 @@ public class Interface {
         System.out.println("2 - Remover Aluno");
         System.out.println("3 - Buscar um Aluno");
         System.out.println("4 - Buscar conjunto de Alunos");
+        System.out.println("5 - Listar Alunos");
+
     }
 
     public void mostrarOpcoesBuscaAluno(){
