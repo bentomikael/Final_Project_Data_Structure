@@ -17,7 +17,7 @@ public class ControladorPrincipal {
         controleEntradaSaida = ControleEntradaSaida.getInstance();
         controleTelas = ControleTelas.getInstance();
         this.listaPrincipal = listaPrincipal;
-        this.diretorios = diretorios; // PODE BUGAR
+        this.diretorios = diretorios;
 
     }
 
@@ -37,8 +37,11 @@ public class ControladorPrincipal {
             case 3:
                 exibeUnicoAluno(controleBuscas.encontraAlunoPelaMatricula(controleTelas.pegaMatricula(), this.listaPrincipal)); //pesquisa e exibe resultado
                 break;
+//            case 666:
+//                exibeAlunos(pesquisaEmDiretorios(controleTelas.buscaGrupo())); //pesquisa e exibe resultado
+//                break;
             case 4:
-                exibeAlunos(pesquisaEmDiretorios(controleTelas.buscaGrupo())); //pesquisa e exibe resultado
+                exibeAlunos(pesquisaEmDiretorios(controleTelas.buscaGrupo(), this.diretorios)); //pesquisa e exibe resultado
                 break;
             case 5:
                 exibeAlunos(getListaAlunos()); // funcionando, lista todos os alunos
@@ -74,8 +77,8 @@ public class ControladorPrincipal {
         return new Object[]{nome,grupos[0],grupos[1],grupos[2]};
     }
 
-    private Aluno[] pesquisaEmDiretorios(int[] opcoes){
-        return controleBuscas.pesquisaGrupos(converteOpcoes(opcoes));
+    private Aluno[] pesquisaEmDiretorios(int[] opcoes, Diretorio[] diretorios){
+        return controleBuscas.pesquisaGrupos(converteOpcoes(opcoes), diretorios);
     }
     //abaixo foi removida ADMINISTRACAO e CFH
 

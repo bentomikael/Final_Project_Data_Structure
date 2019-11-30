@@ -48,10 +48,6 @@ public class Hash {
     public void remover(Aluno aluno) {
         int chave = Integer.parseInt(aluno.getMatricula());
         ListaEncadeada cursorTabela = this.getTabelaEspalhamento()[funcaoHash(chave)];
-
-        //TESTE
-        System.out.println("Removeu "+aluno.getNome());
-
         cursorTabela.remova(aluno);
         if (cursorTabela.estaVazio()) {
             this.getTabelaEspalhamento()[funcaoHash(chave)] = null;
