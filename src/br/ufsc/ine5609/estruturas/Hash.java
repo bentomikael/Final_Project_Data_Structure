@@ -42,7 +42,7 @@ public class Hash {
             this.getTabelaEspalhamento()[grupo] = new ListaEncadeada();
         }
         this.getTabelaEspalhamento()[grupo].insiraPrimeiro(aluno);
-        this.incrementaNumElementos(); // verificar funcionamento
+        this.incrementaNumElementos();
     }
 
     public void remover(Aluno aluno) {
@@ -53,22 +53,17 @@ public class Hash {
             this.getTabelaEspalhamento()[funcaoHash(chave)] = null;
         }
         this.decrementaNumElementos();
-
     }
 
     public Aluno encontrarPorChave(String chave) {
-        int grupo = Integer.parseInt(chave); // posicao na tabelaEspalhamento que o aluno esta
-        if (funcaoHash(grupo) <= this.getTamanhoTabela()) { // verifica se eh posicao valida
+        int grupo = Integer.parseInt(chave);
+        if (funcaoHash(grupo) <= this.getTamanhoTabela()) {
             ListaEncadeada cursorTabela = this.getTabelaEspalhamento()[funcaoHash(grupo)];
-            if (cursorTabela != null) { // verifica se tem algo na posicao
+            if (cursorTabela != null) {
                 return cursorTabela.getPrimeiro().getAluno();
             }
         }
         return null;
-    }
-
-    public ListaEncadeada getListaDeAluno(int chave) {
-        return this.getTabelaEspalhamento()[funcaoHash(chave)];
     }
 
     public Aluno[] getArrayAlunos() {

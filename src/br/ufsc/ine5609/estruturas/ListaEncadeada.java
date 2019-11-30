@@ -2,10 +2,6 @@ package br.ufsc.ine5609.estruturas;
 
 import br.ufsc.ine5609.Aluno;
 
-/**
- *
- * @author m1k4
- */
 public class ListaEncadeada {
     
     private int numAlunos;
@@ -19,10 +15,6 @@ public class ListaEncadeada {
 
     public int getNumAlunos() {
         return numAlunos;
-    }
-
-    public void setNumAlunos(int numElements) {
-        this.numAlunos = numElements;
     }
 
     public Caixa getPrimeiro() {
@@ -51,18 +43,7 @@ public class ListaEncadeada {
             this.incrementaNumAlunos();
         }
     }
-    
-    public void insiraUltimo(Aluno aluno) {
-        Caixa caixa = new Caixa(null, aluno);
-        if (estaVazio()) 
-           this.insiraListaVazia(caixa);
-         else {
-            this.getUltimo().setProximo(caixa);
-            this.setUltimo(caixa);
-            this.incrementaNumAlunos();
-        }
-    }
-    
+
     public void remova(Aluno aluno) {
         if (!estaVazio()) {
             Caixa cursor = this.getPrimeiro();
@@ -70,18 +51,18 @@ public class ListaEncadeada {
             for (int i = 0; i < numAlunos; i++) {
                 if (cursor.getAluno().equals(aluno)) {
                     if (cursor.getAluno().equals(this.getPrimeiro().getAluno()) && 
-                    cursor.getAluno().equals(this.getUltimo().getAluno())) { //eh primeiro e ultimo e decrementaNumAlunos
+                    cursor.getAluno().equals(this.getUltimo().getAluno())) {
                         this.setPrimeiro(null);
                         this.setUltimo(null);
                         this.decrementaNumAlunos();
                         break;
                     }
-                    if (cursor.getAluno().equals(this.getPrimeiro().getAluno())) { //eh primeiro e decrementaNumAlunos
+                    if (cursor.getAluno().equals(this.getPrimeiro().getAluno())) {
                         this.setPrimeiro(this.getPrimeiro().getProximo());
                         this.decrementaNumAlunos();
                         break;
                     }
-                    if (cursor.getAluno().equals(this.getUltimo().getAluno())) { //eh ultimo e decrementaNumAlunos
+                    if (cursor.getAluno().equals(this.getUltimo().getAluno())) {
                         Caixa novoUltimo = this.getPrimeiro();
                         for (int j = 0; j < numAlunos - 2 ; j++) { 
                             novoUltimo = novoUltimo.getProximo();
@@ -91,7 +72,7 @@ public class ListaEncadeada {
                         break;
                     } 
                     if (!cursor.getAluno().equals(this.getPrimeiro().getAluno()) && 
-                    !cursor.getAluno().equals(this.getUltimo().getAluno())) { // nao eh o primeiro e o ultimo e decrementaNumAlunos
+                    !cursor.getAluno().equals(this.getUltimo().getAluno())) {
                         Caixa paraRemover = cursor;
                         cursor = this.getPrimeiro();
                         for (int k = 0; k < i - 1; k++) {

@@ -18,30 +18,29 @@ public class ControladorPrincipal {
         controleTelas = ControleTelas.getInstance();
         this.listaPrincipal = listaPrincipal;
         this.diretorios = diretorios;
-
     }
 
     public void iniciar(){
-        opcaoDoMenu(controleTelas.inicio()); //exibe tela inicial e aguarda opcao
+        opcaoDoMenu(controleTelas.inicio());
     }
 
-    private void opcaoDoMenu(int opcao){ // recebe opcao e direciona
+    private void opcaoDoMenu(int opcao){
         switch (opcao){
             case 1:
-                adicionaAluno(controleTelas.adicionaAluno(), this.listaPrincipal, this.diretorios); // recebe os dados do aluno, a lista principal e os diretorios
+                adicionaAluno(controleTelas.adicionaAluno(), this.listaPrincipal, this.diretorios);
                 break;
             case 2:
                 removeAluno(controleBuscas.encontraAlunoPelaMatricula(controleTelas.pegaMatricula(), this.listaPrincipal),
-                        this.listaPrincipal, this.diretorios); //recebe o aluno, a lista principal e os diretorios
+                        this.listaPrincipal, this.diretorios);
                 break;
             case 3:
-                exibeUnicoAluno(controleBuscas.encontraAlunoPelaMatricula(controleTelas.pegaMatricula(), this.listaPrincipal)); //pesquisa e exibe resultado
+                exibeUnicoAluno(controleBuscas.encontraAlunoPelaMatricula(controleTelas.pegaMatricula(), this.listaPrincipal));
                 break;
             case 4:
-                exibeAlunos(pesquisaEmDiretorios(controleTelas.buscaGrupo(), this.diretorios)); //pesquisa e exibe resultado
+                exibeAlunos(pesquisaEmDiretorios(controleTelas.buscaGrupo(), this.diretorios));
                 break;
             case 5:
-                exibeAlunos(getListaAlunos()); // funcionando, lista todos os alunos
+                exibeAlunos(getListaAlunos());
                 break;
         }
     }
@@ -77,7 +76,6 @@ public class ControladorPrincipal {
     private Aluno[] pesquisaEmDiretorios(int[] opcoes, Diretorio[] diretorios){
         return controleBuscas.pesquisaGrupos(converteOpcoes(opcoes), diretorios);
     }
-    //abaixo foi removida ADMINISTRACAO e CFH
 
     private String[] converteOpcoes(int[] opcoes) {
         String[] resposta = new String[3];
@@ -118,10 +116,4 @@ public class ControladorPrincipal {
     public ControleEntradaSaida getControleEntradaSaida() {
         return this.controleEntradaSaida;
     }
-
-    public Diretorio[] getDiretorios() {
-        return this.diretorios;
-    }
-
-
 }

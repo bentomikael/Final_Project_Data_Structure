@@ -1,14 +1,13 @@
 package br.ufsc.ine5609.controle;
 
 import br.ufsc.ine5609.Aluno;
-import br.ufsc.ine5609.Constantes;
 import br.ufsc.ine5609.telas.Interface;
 
 import java.util.Scanner;
 
 public class ControleTelas {
     private static final ControleTelas INSTANCE = new ControleTelas();
-    private Scanner key; // entrada de dados
+    private Scanner key;
     private int option;
     private Interface tela;
 
@@ -28,14 +27,14 @@ public class ControleTelas {
     public Object[] adicionaAluno(){
         Object[] dadosAluno = new Object[4];
         tela.pedeNome();
-        dadosAluno[0] = key.nextLine(); // nome do aluno
+        dadosAluno[0] = key.nextLine();
 
         tela.mostrarOpcoesCentros(true);
-        dadosAluno[1] = inputInt(3); // centro 1, 2, 3
+        dadosAluno[1] = inputInt(3);
         tela.mostrarOpcoesCursos(true);
-        dadosAluno[2] = inputInt(3); // curso 1, 2, 3
+        dadosAluno[2] = inputInt(3);
         tela.mostrarOpcoesCotas(true);
-        dadosAluno[3] = inputInt(2); // cota
+        dadosAluno[3] = inputInt(2);
         return dadosAluno;
     }
 
@@ -43,10 +42,7 @@ public class ControleTelas {
         tela.pedeMatricula();
         return key.nextLine();
     }
-    public String buscaAluno(){
-        tela.mostrarOpcoesBuscaAluno();
-        return key.nextLine();
-    }
+
     public int[] buscaGrupo(){
         int[] arrayGrupos = new int[3];
         tela.mostrarOpcoesCentros(false);
@@ -72,24 +68,24 @@ public class ControleTelas {
      */
     private int inputInt(int numeroMaximo) {
         String toInt;
-        boolean valid = false;
+        boolean valid;
         do {
             toInt = key.nextLine();
-            if (toInt.equals("")) { //verifica se deu apenas enter
+            if (toInt.equals("")) {
                 valid = false;
                 tela.mOpcaoInvalida();
             }else{
                 try {
-                    option = Integer.valueOf(toInt); //converte para int
+                    option = Integer.valueOf(toInt);
                     if (option < 0)
                         valid = false;
                     else
                         valid = true;
-                } catch (NumberFormatException e) { //se nao conseguiu converter eh pq nao tem apenas numeros
+                } catch (NumberFormatException e) {
                     tela.mOpcaoInvalida();
                     valid = false;
                 }
-                // verifica se esta no limite indicado. se limite = 0,limite infinito
+
                 if (valid == true && numeroMaximo != 0 && option > numeroMaximo) {
                     valid = false;
                     tela.mOpcaoInvalida();

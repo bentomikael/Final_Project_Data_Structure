@@ -5,7 +5,7 @@ import br.ufsc.ine5609.estruturas.Hash;
 import br.ufsc.ine5609.estruturas.Diretorio;
 import java.util.Random;
 
-public class ControleEntradaSaida {
+public class ControleEntradaSaida implements IControle {
     private static final ControleEntradaSaida INSTANCE = new ControleEntradaSaida();
 
     private ControleEntradaSaida() {
@@ -26,14 +26,14 @@ public class ControleEntradaSaida {
         Aluno novoAluno = new Aluno(matricula,nome,centro,curso,cota);
         inserirNoDiretorio(novoAluno, defineDiretorioCentro(novoAluno.getCentro(), diretorios));
         inserirNoDiretorio(novoAluno, defineDiretorioCurso(novoAluno.getCurso(), diretorios));
-        inserirNoDiretorio(novoAluno, defineDiretorioCota(novoAluno.getCotas(), diretorios));
+        inserirNoDiretorio(novoAluno, defineDiretorioCotas(novoAluno.getCotas(), diretorios));
         listaPrincipal.inserir(novoAluno);
     }
 
     public void removerAluno(Aluno aluno, Hash listaPrincipal, Diretorio[] diretorios) {
         removerDoDiretorio(aluno, defineDiretorioCentro(aluno.getCentro(), diretorios));
         removerDoDiretorio(aluno, defineDiretorioCurso(aluno.getCurso(), diretorios));
-        removerDoDiretorio(aluno, defineDiretorioCota(aluno.getCotas(), diretorios));
+        removerDoDiretorio(aluno, defineDiretorioCotas(aluno.getCotas(), diretorios));
         listaPrincipal.remover(aluno);
     }
 
@@ -55,12 +55,13 @@ public class ControleEntradaSaida {
      * Metodo para definer o diretorio centro correto para o aluno
      * @return diretorio correto
      */
-    private Diretorio defineDiretorioCentro(String centro, Diretorio[] diretorios) {
-        if (centro == diretorios[0].getNome()) { //CTC
+    @Override
+    public Diretorio defineDiretorioCentro(String centro, Diretorio[] diretorios) {
+        if (centro == diretorios[0].getNome()) {
             return diretorios[0];
-        } else if (centro == diretorios[1].getNome()) { //CCS
+        } else if (centro == diretorios[1].getNome()) {
             return diretorios[1];
-        } else if (centro == diretorios[2].getNome()) { //CCE
+        } else if (centro == diretorios[2].getNome()) {
             return diretorios[2];
         }
         return null;
@@ -70,12 +71,13 @@ public class ControleEntradaSaida {
      * Metodo para definer o diretorio curso correto para o aluno
      * @return diretorio correto
      */
-    private Diretorio defineDiretorioCurso(String curso, Diretorio[] diretorios) {
-        if (curso == diretorios[3].getNome()) { //SISTEMAS
+    @Override
+    public Diretorio defineDiretorioCurso(String curso, Diretorio[] diretorios) {
+        if (curso == diretorios[3].getNome()) {
             return diretorios[3];
-        } else if (curso == diretorios[4].getNome()) { //COMPUTACAO
+        } else if (curso == diretorios[4].getNome()) {
             return diretorios[4];
-        } else if (curso == diretorios[5].getNome()) { //ENGENHARIA
+        } else if (curso == diretorios[5].getNome()) {
             return diretorios[5];
         }
         return null;
@@ -85,10 +87,11 @@ public class ControleEntradaSaida {
      * Metodo para definer o diretorio cota correto para o aluno
      * @return diretorio correto
      */
-    private Diretorio defineDiretorioCota(String cota, Diretorio[] diretorios) {
-        if (cota == diretorios[6].getNome()) { //SIM
+    @Override
+    public Diretorio defineDiretorioCotas(String cota, Diretorio[] diretorios) {
+        if (cota == diretorios[6].getNome()) {
             return diretorios[6];
-        } else if (cota == diretorios[7].getNome()) { //NAO
+        } else if (cota == diretorios[7].getNome()) {
             return diretorios[7];
         }
         return null;
@@ -101,7 +104,7 @@ public class ControleEntradaSaida {
     private String gerarMatricula() {
         Random rand = new Random();
         String matricula = "";
-        int tamanhaoMatricula = 4; //SETA O TAMANHO DA MATRICULA
+        int tamanhaoMatricula = 4;
         String[] caracteres = new String [] {"1","2","3","4","5","6","7","8","9"};
         for (int i = 0; i < tamanhaoMatricula; i++) {
             matricula += caracteres[rand.nextInt(9)];

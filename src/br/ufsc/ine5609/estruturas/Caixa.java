@@ -2,10 +2,6 @@ package br.ufsc.ine5609.estruturas;
 
 import br.ufsc.ine5609.Aluno;
 
-/**
- *
- * @author m1k4
- */
 public class Caixa {
     
     private Caixa proximo;
@@ -28,7 +24,4 @@ public class Caixa {
         return aluno;
     }
 
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
-    }
 }
