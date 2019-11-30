@@ -88,9 +88,22 @@ public class ControleBuscas {
     }
 
     private Aluno[] pesquisaDiretoriosABC(Diretorio diretorioA, Diretorio diretorioB, Diretorio diretorioC) {
-        return null;
-    }
 
+        Diretorio diretorioABC = new Diretorio("ABC");
+
+        Aluno[] alunosDiretorioAB = pesquisaDiretoriosAB(diretorioA, diretorioB);
+        Aluno[] alunosDiretorioC = diretorioC.getListaAlunos().getTodosAlunos();
+
+        for (int i = 0; i < alunosDiretorioAB.length; i++) {
+            for (int j = 0; j < alunosDiretorioC.length; j++) {
+                if (alunosDiretorioAB[i].getMatricula() == alunosDiretorioC[j].getMatricula()) {
+                    diretorioABC.getListaAlunos().insiraPrimeiro(alunosDiretorioAB[i]);
+                }
+            }
+        }
+        return diretorioABC.getListaAlunos().getTodosAlunos();
+
+    }
 
     private Aluno[] diretorioParaArray(Diretorio diretorio) {
         return diretorio.getListaAlunos().getTodosAlunos();
@@ -134,16 +147,6 @@ public class ControleBuscas {
         }
         return null;
     }
-
-
-
-
-
-
-
-
-
-
 
     /**
      * Metodo para retornar um aluno buscando pela matricula na lista principal

@@ -39,6 +39,21 @@ public class Main{
         Object[] dadosAlunos10 = new Object[] {
                 "Joana", Constantes.CCE, Constantes.ENGENHARIA, Constantes.SIM
         };
+        Object[] dadosAlunos11 = new Object[] {
+                "Vera", Constantes.CCE, Constantes.ENGENHARIA, Constantes.SIM
+        };
+        Object[] dadosAlunos12 = new Object[] {
+                "Lucia", Constantes.CCE, Constantes.ENGENHARIA, Constantes.SIM
+        };
+        Object[] dadosAlunos13 = new Object[] {
+                "Renata", Constantes.CCE, Constantes.ENGENHARIA, Constantes.SIM
+        };
+        Object[] dadosAlunos14 = new Object[] {
+                "Kelly", Constantes.CCE, Constantes.ENGENHARIA, Constantes.SIM
+        };
+        Object[] dadosAlunos15 = new Object[] {
+                "Karina", Constantes.CCE, Constantes.ENGENHARIA, Constantes.SIM
+        };
 
         Diretorio[] diretorios = new Diretorio[Constantes.QTD_DIRETORIOS]; // cria o array de diretorios
         // inicializa cada diretorio
@@ -67,6 +82,11 @@ public class Main{
         c.getControleEntradaSaida().inserirNovoAluno(dadosAlunos8, listaPrincipal, diretorios);
         c.getControleEntradaSaida().inserirNovoAluno(dadosAlunos9, listaPrincipal, diretorios);
         c.getControleEntradaSaida().inserirNovoAluno(dadosAlunos10, listaPrincipal, diretorios);
+        c.getControleEntradaSaida().inserirNovoAluno(dadosAlunos11, listaPrincipal, diretorios);
+        c.getControleEntradaSaida().inserirNovoAluno(dadosAlunos12, listaPrincipal, diretorios);
+        c.getControleEntradaSaida().inserirNovoAluno(dadosAlunos13, listaPrincipal, diretorios);
+        c.getControleEntradaSaida().inserirNovoAluno(dadosAlunos14, listaPrincipal, diretorios);
+        c.getControleEntradaSaida().inserirNovoAluno(dadosAlunos15, listaPrincipal, diretorios);
 
         //teste OK
         System.out.println(c.getDiretorios()[0].getNome()); // DIRETORIO CTC
