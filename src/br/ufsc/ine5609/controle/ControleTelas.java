@@ -31,48 +31,11 @@ public class ControleTelas {
         dadosAluno[0] = key.nextLine(); // nome do aluno
 
         tela.mostrarOpcoesCentros(true);
-        int opcaoCentro = inputInt(3); // centro 1, 2, 3
-
-        switch (opcaoCentro) {
-            case 1:
-                dadosAluno[1] = Constantes.CTC;
-                break;
-            case 2:
-                dadosAluno[1] = Constantes.CCS;
-                break;
-            case 3:
-                dadosAluno[1] = Constantes.CCE;
-                break;
-        }
-
+        dadosAluno[1] = inputInt(3); // centro 1, 2, 3
         tela.mostrarOpcoesCursos(true);
-        int opcaoCurso = inputInt(3); // curso 1, 2, 3
-
-        switch (opcaoCurso) {
-            case 1:
-                dadosAluno[2] = Constantes.SISTEMAS;
-                break;
-            case 2:
-                dadosAluno[2] = Constantes.COMPUTACAO;
-                break;
-            case 3:
-                dadosAluno[2] = Constantes.ENGENHARIA;
-                break;
-        }
-
-
+        dadosAluno[2] = inputInt(3); // curso 1, 2, 3
         tela.mostrarOpcoesCotas(true);
-        int opcaoCota = inputInt(2); // cota
-
-        switch (opcaoCota) {
-            case 1:
-                dadosAluno[3] = Constantes.SIM;
-                break;
-            case 2:
-                dadosAluno[3] = Constantes.NAO;
-                break;
-        }
-
+        dadosAluno[3] = inputInt(2); // cota
         return dadosAluno;
 
     }
@@ -96,12 +59,6 @@ public class ControleTelas {
         System.out.println("\n Pressione uma tecla para continuar");
         key.nextLine();
     }
-
-
-
-
-
-
 
     /**
      * Recebe uma String,garante que contem apenas numeros e converte para int.

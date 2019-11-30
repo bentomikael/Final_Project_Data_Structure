@@ -38,10 +38,10 @@ public class Main{
 
         c.iniciar();
 
-        ControleBuscas controleBuscas = ControleBuscas.getInstance();
+        //ControleBuscas controleBuscas = ControleBuscas.getInstance();
 
-        Interface i = new Interface();
-        i.listarAlunos(listaAlunos);
+        //Interface i = new Interface();
+        //i.listarAlunos(listaAlunos);
 
     }
 }

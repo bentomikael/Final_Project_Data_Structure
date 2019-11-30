@@ -45,7 +45,7 @@ public class ControladorPrincipal {
     }
 
     private void adicionaAluno(Object[] dadosNovoAluno, Hash listaPrincipal) {
-        this.controleEntradaSaida.inserirNovoAluno(dadosNovoAluno, listaPrincipal);
+        this.controleEntradaSaida.inserirNovoAluno(adicionaAluno(dadosNovoAluno), listaPrincipal);
         iniciar();
     }
 
@@ -57,6 +57,7 @@ public class ControladorPrincipal {
     private boolean removeAluno(){
         return true;
     }
+
     private Object[] adicionaAluno(Object[] dadosAluno){
         String nome = (String) dadosAluno[0];
         String[] grupos = converteOpcoes(new int[]{(int) dadosAluno[1],(int) dadosAluno[2],(int) dadosAluno[3]});
@@ -67,6 +68,7 @@ public class ControladorPrincipal {
         return controleBuscas.pesquisaGrupos(converteOpcoes(opcoes));
     }
     //abaixo foi removida ADMINISTRACAO e CFH
+
     private String[] converteOpcoes(int[] opcoes) {
         String[] resposta = new String[3];
         if (opcoes[0] == 0) {
@@ -75,22 +77,22 @@ public class ControladorPrincipal {
             resposta[0] = Constantes.CTC;
         } else if (opcoes[0] == 2) {
             resposta[0] = Constantes.CCS;
-        } else if (opcoes[0] == 4) {
+        } else if (opcoes[0] == 3) {
             resposta[0] = Constantes.CCE;
         }
 
-        if (opcoes[0] == 0) {
-            resposta[0] = "-";
-        } else if (opcoes[1] == 2) {
+        if (opcoes[1] == 0) {
+            resposta[1] = "-";
+        } else if (opcoes[1] == 1) {
             resposta[1] = Constantes.SISTEMAS;
-        } else if (opcoes[1] == 3) {
+        } else if (opcoes[1] == 2) {
             resposta[1] = Constantes.COMPUTACAO;
-        } else if (opcoes[1] == 4) {
+        } else if (opcoes[1] == 3) {
             resposta[1] = Constantes.ENGENHARIA;
         }
 
-        if (opcoes[0] == 0) {
-            resposta[0] = "-";
+        if (opcoes[2] == 0) {
+            resposta[2] = "-";
         } else if (opcoes[2] == 1) {
             resposta[2] = Constantes.SIM;
         } else {
